@@ -2,24 +2,37 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rbody; //Player‚É‚Â‚¢‚Ä‚¢‚éRigidbody2D‚ğˆµ‚¤‚½‚ß‚Ì•Ï”
+    Rigidbody2D rbody; //Playerã«ã¤ã„ã¦ã„ã‚‹Rigidbody2Dã‚’æ‰±ã†ãŸã‚ã®å¤‰æ•°
 
-    float axisH; //“ü—Í‚Ì•ûŒü‚ğ‹L‰¯‚·‚é‚½‚ß‚Ì•Ï”
+    float axisH; //å…¥åŠ›ã®æ–¹å‘ã‚’è¨˜æ†¶ã™ã‚‹ãŸã‚ã®å¤‰æ•°
+    public float speed = 3.0f; //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’èª¿æ•´
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    { 
-        rbody = GetComponent<Rigidbody2D>(); //Player‚É‚Â‚¢‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒgî•ñ‚ğæ“¾
-        
+    {
+        rbody = GetComponent<Rigidbody2D>(); //Playerã«ã¤ã„ã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæƒ…å ±ã‚’å–å¾—
+
     }
 
     // Update is called once per frame
     void Update()
     {
-            //Velocity‚ÌŒ³‚Æ‚È‚é’l‚Ìæ“¾(‰E‚È‚ç1.0fA¶‚È‚ç-1.0fA‰½‚à‚È‚¯‚ê‚Î0)
-            axisH = Input.GetAxisRaw("Horizontal");
+        //Velocityã®å…ƒã¨ãªã‚‹å€¤ã®å–å¾—(å³ãªã‚‰1.0fã€å·¦ãªã‚‰-1.0fã€ä½•ã‚‚ãªã‘ã‚Œã°0)
+        axisH = Input.GetAxisRaw("Horizontal");
 
-        //velocyty‚É’l‚ğ‘ã“ü
-        rbody.linearVelocity = new Vector2(axisH,0);            
+
+
+
+
+
+
     }
+
+    //1ç§’é–“ã«50å›ç¹°ã‚Šè¿”ã™ã‚ˆã†ã«åˆ¶å¾¡ã—ãªãŒã‚‰è¡Œã†ç¹°ã‚Šè¿”ã—ãƒ¡ã‚½ãƒƒãƒ‰
+    private void FixedUpdate()
+    {
+        //velocytyã«å€¤ã‚’ä»£å…¥
+        rbody.linearVelocity = new Vector2(axisH * speed, rbody.linearVelocity.y);
+    }
+
 }
