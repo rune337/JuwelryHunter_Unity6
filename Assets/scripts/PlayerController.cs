@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rbody; //PlayerについているRigidbody2Dを扱うための変数
+    
 
     [Header("プレイヤーの能力値")]
     public float speed = 3.0f; //プレイヤーのスピードを調整
@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("地面判定の対象レイヤー")]
     public LayerMask groundLayer;
+
+    Rigidbody2D rbody; //PlayerについているRigidbody2Dを扱うための変数
+    Animator animator; //Animatorコンポーネントを扱うための変数
 
     float axisH; //入力の方向を記憶するための変数
     bool goJump = false; //ジャンプフラグ (treu　真on　false 偽off)
@@ -21,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody2D>(); //Playerについているコンポーネント情報を取得
         
-
+        animator = GetComponent<Animator>(); //Animatorコンポーネントの情報を取得
     }
 
     // Update is called once per frame
@@ -75,6 +78,17 @@ public class PlayerController : MonoBehaviour
             goJump  = false;
         }
 
+       // if(onGround) //地面の上にいるとき
+        //{
+            if(axisH == 0)//左右がが押されていない
+            {
+                animator.SetBool("Run",false); //idleアニメに切り替え
+            }
+            else //左右が押されている
+            {
+                ;animator.SetBool("Run", true); //Runアニメに切り替え
+            }
+        //}
 
     }
 
@@ -84,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (onGround)
         {
             goJump = true; //true:ジャンプフラグをON
+            animator.SetTrigger("Jump");
         }
     }
 }
