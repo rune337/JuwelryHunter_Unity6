@@ -29,7 +29,10 @@ public class CameraController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
+        if( player != null)
+        { 
         //いったんプレイヤーのX座標、Y座標の位置を変数に取得
         x = player.transform.position.x;
         y = player.transform.position.y;
@@ -42,11 +45,11 @@ public class CameraController : MonoBehaviour
         }
 
         //もしも左右の限界までプレイヤーが移動していたら
-        if(x < leftLimit)
+        if (x < leftLimit)
         {
             x = leftLimit;
         }
-        else if(x > rightLimit)
+        else if (x > rightLimit)
         {
             x = rightLimit;
         }
@@ -72,5 +75,7 @@ public class CameraController : MonoBehaviour
 
         //取り決めた各変数x,y,zの値をカメラのポジションとする
         transform.position = new Vector3(x, y, z);
+
+    }
     }
 }
