@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -12,9 +13,16 @@ public class UIController : MonoBehaviour
     public Sprite gameClearSprite; //ゲームクリアの絵
     public Sprite gameOverSprite;  //ゲームオーバーの絵
 
+    TimeController timeCnt; //timeController.csの参照
+    public GameObject timeText;//ゲームオブジェクトであるTimeText
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        timeCnt = GetComponent<TimeController>();
+
+
         buttonPanel.SetActive(false); //存在を非表示
 
         //時間差でメソッドを発動
@@ -25,7 +33,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameState == "gameclear")
+        if (GameManager.gameState == "gameclear")
         {
             buttonPanel.SetActive(true); //メインパネルの表示
             mainImage.SetActive(true); //メイン画像の復活
@@ -35,7 +43,7 @@ public class UIController : MonoBehaviour
             retryButton.GetComponent<Button>().interactable = false;
         }
 
-        else if(GameManager.gameState == "gameover")
+        else if (GameManager.gameState == "gameover")
         {
             buttonPanel.SetActive(true); //メインパネルの表示
             mainImage.SetActive(true); //メイン画像の復活
@@ -43,6 +51,12 @@ public class UIController : MonoBehaviour
             mainImage.GetComponent<Image>().sprite = gameOverSprite;
             //リトライボタンオブジェクトのButtonコンポーネントが所持している変数intaeractibleを無効(ボタン機能を無効)
             nextButton.GetComponent<Button>().interactable = false;
+        }
+        else if (GameManager.gameState == "playing")
+        {
+            //いったんdisplayTimeの数字を変数timesに渡す
+            float times = timeCnt.displayTime;
+            timeText.GetComponent<TextMeshProUGUI>().text = Mathf.Ceil(times).ToString();
         }
     }
 

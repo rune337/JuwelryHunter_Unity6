@@ -129,11 +129,18 @@ public class PlayerController : MonoBehaviour
         }
 
         //ぶつかった相手がDeadタグを持っていたら
-        if(collision.gameObject.CompareTag("Dead"))
-            {
+        if (collision.gameObject.CompareTag("Dead"))
+        {
             GameManager.gameState = "gameover";
             Debug.Log("ゲームオーバー!");
             GameOver();
+        }
+
+        //アイテムに触れたらステージスコアに加算
+        if (collision.gameObject.CompareTag("ItemScore"))
+        {
+            GameManager.stageScore += collision.gameObject.GetComponent<ItemData>().value;
+            Destroy(collision.gameObject);
         }
 
 
