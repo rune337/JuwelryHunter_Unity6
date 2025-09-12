@@ -14,7 +14,7 @@ public class CannonController : MonoBehaviour
     GameObject player;                      //プレイヤー
     float passedTimes = 0;                  //経過時間
 
-    AudioSource audioSource;
+    AudioSource audio;
     public AudioClip se_Shoot;
 
     //距離チェック
@@ -35,34 +35,36 @@ public class CannonController : MonoBehaviour
         //プレイヤーを取得
         player = GameObject.FindGameObjectWithTag("Player");
 
-        audioSource = GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //待機時間加算
-        passedTimes += Time.deltaTime;
-        //Playerとの距離チェック
-        if (CheckLength(player.transform.position))
+        if (player != null)
         {
-            //待機時間経過
-            if (passedTimes > delayTime)
+            //待機時間加算
+            passedTimes += Time.deltaTime;
+            //Playerとの距離チェック
+            if (CheckLength(player.transform.position))
             {
-                passedTimes = 0;        //時間を0にリセット
-                //砲弾をプレハブから作る
-                Vector2 pos = new Vector2(gateTransform.position.x,
-                    gateTransform.position.y);
-                GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity);
-                //砲身が向いている方向に発射する
-                Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();
-                float angleZ = transform.localEulerAngles.z;
-                float x = Mathf.Cos(angleZ * Mathf.Deg2Rad);
-                float y = Mathf.Sin(angleZ * Mathf.Deg2Rad);
-                Vector2 v = new Vector2(x, y) * fireSpeed;
-                rbody.AddForce(v, ForceMode2D.Impulse);
+                //待機時間経過
+                if (passedTimes > delayTime)
+                {
+                    passedTimes = 0;        //時間を0にリセット
+                                            //砲弾をプレハブから作る
+                    Vector2 pos = new Vector2(gateTransform.position.x,gateTransform.position.y);
+                    GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity);
+                    //砲身が向いている方向に発射する
+                    Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();
+                    float angleZ = transform.localEulerAngles.z;
+                    float x = Mathf.Cos(angleZ * Mathf.Deg2Rad);
+                    float y = Mathf.Sin(angleZ * Mathf.Deg2Rad);
+                    Vector2 v = new Vector2(x, y) * fireSpeed;
+                    rbody.AddForce(v, ForceMode2D.Impulse);
 
-                audioSource.PlayOneShot(se_Shoot);
+                    audio.PlayOneShot(se_Shoot);
+                }
             }
         }
     }

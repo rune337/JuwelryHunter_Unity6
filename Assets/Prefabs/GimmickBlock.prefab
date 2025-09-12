@@ -91,9 +91,10 @@ GameObject:
   - component: {fileID: 8812535900256560884}
   - component: {fileID: 1435594172774289166}
   - component: {fileID: 6653466756313718139}
+  - component: {fileID: 4436564506281236915}
   m_Layer: 6
   m_Name: GimmickBlock
-  m_TagString: Untagged
+  m_TagString: Dead
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,3 +279,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4436564506281236915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625286099718816333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8827a42535eb2045b7426f3b67a35ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 0
+  isDelete: 0
+  deadObj: {fileID: 604984463180663451}
