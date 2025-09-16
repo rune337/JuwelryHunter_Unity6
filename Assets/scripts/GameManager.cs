@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 
     public static string gameState;
     public static int totalScore; //ゲーム全体を通してのスコア
-    public static int stageScore; //そのステージに獲得してスコア
+    public static int stageScore; //そのステージで獲得したスコア
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

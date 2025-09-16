@@ -43,10 +43,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Ground"))
+        if (!collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
         {
             isRight = !isRight;
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)

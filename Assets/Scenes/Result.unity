@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Title
-  toTitle: 0
+  toTitle: 1
 --- !u!114 &1212006202
 MonoBehaviour:
   m_ObjectHideFlags: 0

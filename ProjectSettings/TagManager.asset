@@ -9,6 +9,7 @@ TagManager:
   - ItemScore
   - ScoreItem
   - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX

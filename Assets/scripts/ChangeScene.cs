@@ -11,6 +11,7 @@ public class ChangeScene : MonoBehaviour
     {
         //シーンが切り替わる際はいずれにしてもステージスコアはリセット
         GameManager.stageScore = 0;
+        Debug.Log("【ChangeScene】スコアは 0 にリセットされました。");
 
         //toTitleフラグがtrueになっている場合はタイトルに戻ることが予想されるのでトータルスコアもリセット
         if (toTitle) GameManager.totalScore = 0;

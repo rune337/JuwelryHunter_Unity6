@@ -74,7 +74,7 @@ public class TimeController : MonoBehaviour
                 }
             }
 
-            Debug.Log(displayTime);
+            //Debug.Log(displayTime);
 
         }
     }

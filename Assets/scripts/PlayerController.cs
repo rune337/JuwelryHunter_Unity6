@@ -79,8 +79,10 @@ public class PlayerController : MonoBehaviour
             groundLayer        //対象となるレイヤー情報 ※LayerMask
             );
 
-        //Velocityに値を代入
-        rbody.linearVelocity = new Vector2(axisH * speed, rbody.linearVelocity.y);
+
+            //Velocityに値を代入
+            rbody.linearVelocity = new Vector2(axisH * speed, rbody.linearVelocity.y);
+
 
         //ジャンプフラグが立ったら
         if (goJump)
