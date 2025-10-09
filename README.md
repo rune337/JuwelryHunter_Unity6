@@ -15,12 +15,12 @@
 Playerのアニメ切り替えには各クリップをトランジションで繋いでフラグで管理しました。トランジションを組み込むことで、アニメ切り替えが滑らかになり、
 かつコーディングが効率的なものになりました。
   
-![トランザクションの絵](readmeIMg/animator.jpg)
+![トランザクションの絵](readmeImg/animator.jpg)
   
 ## Itemのコーディングの効率化
 Itemは列挙型のItemColorを自作して、ItemColor型の変数次第で選ばれた色により見た目が変わるようなコーディングの工夫を行いました。
 
-![トランザクションの絵](readmeIMg/item.jpg)
+![トランザクションの絵](readmeImg/item.jpg)
 
 ```
 using UnityEngine;
@@ -69,8 +69,8 @@ public class ItemData : MonoBehaviour
 ## TextMeshProのデザイン切り分け
 TextMeshProのデザインを細かく切り分けてデータを用意するなど工夫しました。
 
-![TextMeshProデザインリザルト](readmeIMg/result.jpg)
+![TextMeshProデザインリザルト](readmeImg/result.jpg)
 
-![TextMeshProデザインタイトル](readmeIMg/title.jpg)
+![TextMeshProデザインタイトル](readmeImg/title.jpg)
 
-![TextMeshProフォント](readmeIMg/font.jpg)
+![TextMeshProフォント](readmeImg/font.jpg)
